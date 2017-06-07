@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import {addTodo} from '../actions.js';
 
@@ -8,8 +9,12 @@ class AddTodo extends Component {
     constructor(props, context) {
         super(props, context);
 
-        this.onSubmit = this.onSubmit.bind(this);
-        this.refInput = this.refInput.bind(this);
+        this.onSubmit = this
+            .onSubmit
+            .bind(this);
+        this.refInput = this
+            .refInput
+            .bind(this);
     }
 
     onSubmit(ev) {
@@ -20,7 +25,9 @@ class AddTodo extends Component {
             return;
         }
 
-        this.props.onAdd(input.value);
+        this
+            .props
+            .onAdd(input.value);
         input.value = '';
     }
 
@@ -32,8 +39,8 @@ class AddTodo extends Component {
         return (
             <div className="add-todo">
                 <form onSubmit={this.onSubmit}>
-                    <input className="new-todo" ref={this.refInput} />
-                    <input className="add-btn" type="submit" />
+                    <input className="new-todo" ref={this.refInput}/>
+                    <input className="add-btn" type="submit"/>
                 </form>
             </div>
         )
@@ -44,13 +51,11 @@ AddTodo.PropTypes = {
     onAdd: PropTypes.func.isRequired
 };
 
+// const mapDispatchToProps = (dispatch) => ({     onAdd: (text) => {
+// dispatch(addTodo(text));     } });
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onAdd: (text) => {
-            dispatch(addTodo(text));
-        }
+export default connect(null, (dispatch) => ({
+    onAdd: (text) => {
+        dispatch(addTodo(text));
     }
-};
-
-export default connect(null, mapDispatchToProps);
+}))(AddTodo);

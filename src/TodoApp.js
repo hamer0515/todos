@@ -1,12 +1,14 @@
 import React from 'react';
-import { view as Todos } from './todos/';
-import { view as filter } from './filter/';
+import {view as Todos} from './todos/';
+import {view as Filter} from './filter/';
 
 function TodoApp() {
-    <div>
-        <Todos />
-        <Filters />
-    </div>
+    return (
+        <div>
+            <Todos/>
+            <Filter/>
+        </div>
+    );
 }
 
 export default TodoApp;
